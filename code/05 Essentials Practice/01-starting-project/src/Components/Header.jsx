@@ -1,4 +1,4 @@
-export default function () {
+export default function Header() {
   return (
     <header id="header">
       <img src="investment-calculator-logo.png" alt="Investment Calculator Logo" />
