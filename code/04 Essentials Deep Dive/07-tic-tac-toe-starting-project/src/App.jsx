@@ -6,7 +6,7 @@ import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 import GameOver from "./components/GameOver";
 
-// VARIABLES
+// GLOBAL VARIABLES
 
 const PLAYERS = {
   X: 'Player 1',
@@ -19,7 +19,7 @@ const INITIAL_GAME_BOARD = [
   [null, null, null],
 ];
 
-// FUNCTIONS
+// DERIVE FUNCTIONS
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -69,16 +69,23 @@ function deriveWinner(gameBoard, players) {
   return winner;
 }
 
-// COMPONENT
+// COMPONENT FUNCTION
 
 function App() {
+
+  // USESTATE
+
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
+
+  // COMPONENT VARIABLES
 
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns);
   const winner = deriveWinner(gameBoard, players);
   const hasDraw = gameTurns.length === 9 && !winner;
+
+  // COMPONENT HANDLERS
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
@@ -106,6 +113,8 @@ function App() {
     });
   }
 
+  // CONSTRUCTED COMPONENT
+
   return (
     <main>
       <div id="game-container">
@@ -132,5 +141,7 @@ function App() {
     </main>
   );
 }
+
+// EXPORTS
 
 export default App;

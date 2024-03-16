@@ -1,17 +1,50 @@
-import Input from "./Input";
-import { calculateInvestmentResults } from "../util/investment";
-
-
-
-export default function UserInput() {
+export default function UserInput({ onChange, userInput }) {
   return (
-    <div id="user-input">
+    <section id="user-input">
       <div className="input-group">
-        <Input label={`initial investment`}/>
-        <Input label={`annual investment`}/>
-        <Input label={`expected return`}/>
-        <Input label={`duration`}/>
+        <p>
+          <label htmlFor="">Initial Investment</label>
+          <input
+            type="number"
+            required
+            value={userInput.initialInvestment}
+            onChange={(event) =>
+              onChange("initialInvestment", event.target.value)
+            }
+          />
+        </p>
+        <p>
+          <label htmlFor="">Annual Investment</label>
+          <input
+            type="number"
+            required
+            value={userInput.annualInvestment}
+            onChange={(event) =>
+              onChange("annualInvestment", event.target.value)
+            }
+          />
+        </p>
       </div>
-    </div>
+      <div className="input-group">
+        <p>
+          <label htmlFor="">Expected Return</label>
+          <input
+            type="number"
+            required
+            value={userInput.expectedReturn}
+            onChange={(event) => onChange("expectedReturn", event.target.value)}
+          />
+        </p>
+        <p>
+          <label htmlFor="">Duration</label>
+          <input
+            type="number"
+            required
+            value={userInput.duration}
+            onChange={(event) => onChange("duration", event.target.value)}
+          />
+        </p>
+      </div>
+    </section>
   );
 }
