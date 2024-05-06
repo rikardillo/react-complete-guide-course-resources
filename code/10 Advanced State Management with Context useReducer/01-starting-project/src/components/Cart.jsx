@@ -9,6 +9,7 @@ export default function Cart() {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+  
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
 
   return (
